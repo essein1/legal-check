@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>法律核查指引系统</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
 
 :root {
   --bg:    #f7f4ee;
@@ -28,7 +28,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min-height:100vh;}
+body{background:var(--bg);color:var(--ink);font-family:'PingFang SC','Microsoft YaHei','SimSun',serif;min-height:100vh;}
 
 /* ─── 顶栏 ─── */
 .header{
@@ -53,7 +53,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   flex-shrink:0;
 }
 .header-sep{flex:1;}
-.header-hint{font-size:11px;color:#7a7060;font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.header-hint{font-size:11px;color:#7a7060;font-family:'SF Mono','Courier New',monospace;letter-spacing:1px;}
 
 /* ─── 主布局 ─── */
 .layout{display:flex;min-height:calc(100vh - 62px);}
@@ -74,7 +74,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 }
 .side-label{
   font-size:10px;font-weight:700;letter-spacing:3px;
-  color:var(--ink4);font-family:'JetBrains Mono',monospace;
+  color:var(--ink4);font-family:'SF Mono','Courier New',monospace;
   margin-bottom:10px;
 }
 
@@ -97,7 +97,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .upload-icon{font-size:26px;margin-bottom:8px;}
 .upload-text{font-size:12px;color:var(--ink3);line-height:1.7;}
 .upload-text strong{color:var(--gold2);}
-.upload-hint{font-size:10px;color:var(--ink4);margin-top:5px;font-family:'JetBrains Mono',monospace;}
+.upload-hint{font-size:10px;color:var(--ink4);margin-top:5px;font-family:'SF Mono','Courier New',monospace;}
 
 /* 项目类型选择 */
 .type-grid{display:flex;flex-wrap:wrap;gap:6px;}
@@ -106,7 +106,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   font-size:11px;cursor:pointer;
   border:1px solid var(--line);
   background:var(--bg);color:var(--ink3);
-  transition:all .15s;font-family:'Noto Serif SC',serif;
+  transition:all .15s;font-family:'PingFang SC','Microsoft YaHei','SimSun',serif;
 }
 .type-tag:hover{border-color:var(--gold);color:var(--gold);}
 .type-tag.active{background:var(--ink);color:#f7f4ee;border-color:var(--ink);}
@@ -130,10 +130,10 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .fi-txt{background:#e0f0e8;color:var(--green);}
 .file-body{flex:1;min-width:0;}
 .file-name{font-size:11px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:2px;}
-.file-meta{font-size:10px;color:var(--ink4);font-family:'JetBrains Mono',monospace;}
+.file-meta{font-size:10px;color:var(--ink4);font-family:'SF Mono','Courier New',monospace;}
 .file-badge{
   font-size:10px;padding:2px 6px;border-radius:10px;
-  font-family:'JetBrains Mono',monospace;flex-shrink:0;white-space:nowrap;
+  font-family:'SF Mono','Courier New',monospace;flex-shrink:0;white-space:nowrap;
 }
 .fb-ok{background:#d4ead8;color:var(--green);}
 .fb-ing{background:#f5ead0;color:var(--gold);}
@@ -144,7 +144,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .sidebar-footer{
   padding:10px 16px;border-top:1px solid var(--line);
   font-size:10px;color:var(--ink4);
-  font-family:'JetBrains Mono',monospace;
+  font-family:'SF Mono','Courier New',monospace;
   display:flex;justify-content:space-between;
 }
 .sidebar-footer span{color:var(--gold2);}
@@ -161,7 +161,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .btn{
   padding:8px 18px;border-radius:4px;
   font-size:12px;cursor:pointer;
-  font-family:'Noto Serif SC',serif;
+  font-family:'PingFang SC','Microsoft YaHei','SimSun',serif;
   font-weight:600;letter-spacing:1px;
   border:1px solid transparent;
   transition:all .15s;
@@ -179,7 +179,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .prog-inline{display:flex;align-items:center;gap:8px;}
 .prog-track{width:120px;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
 .prog-fill{height:100%;background:var(--green);border-radius:2px;transition:width .3s;}
-.prog-txt{font-size:11px;color:var(--green);font-family:'JetBrains Mono',monospace;}
+.prog-txt{font-size:11px;color:var(--green);font-family:'SF Mono','Courier New',monospace;}
 
 .output{flex:1;overflow-y:auto;padding:28px 32px;}
 
@@ -210,7 +210,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   background:var(--bg1);flex:1;
 }
 .flow-step:last-child{border-right:none;}
-.flow-num{font-size:20px;font-weight:700;color:var(--gold);font-family:'JetBrains Mono',monospace;margin-bottom:6px;}
+.flow-num{font-size:20px;font-weight:700;color:var(--gold);font-family:'SF Mono','Courier New',monospace;margin-bottom:6px;}
 .flow-text{font-size:12px;color:var(--ink3);line-height:1.7;}
 
 /* ─── 处理中 ─── */
@@ -230,7 +230,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .proc-title{font-size:14px;color:var(--ink2);letter-spacing:2px;}
 .proc-log{
   font-size:11px;color:var(--ink4);
-  font-family:'JetBrains Mono',monospace;
+  font-family:'SF Mono','Courier New',monospace;
   text-align:center;line-height:1.9;
   max-width:380px;
 }
@@ -246,7 +246,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   gap:16px;flex-wrap:wrap;
 }
 .result-title{font-size:17px;font-weight:700;color:var(--ink);}
-.result-meta{font-size:11px;color:var(--ink4);margin-top:4px;font-family:'JetBrains Mono',monospace;}
+.result-meta{font-size:11px;color:var(--ink4);margin-top:4px;font-family:'SF Mono','Courier New',monospace;}
 .result-summary{font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.7;}
 .result-actions{display:flex;gap:8px;flex-shrink:0;}
 
@@ -257,12 +257,12 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   background:var(--bg1);border-radius:6px;
   border:1px solid var(--line);
 }
-.filter-label{font-size:11px;color:var(--ink4);font-family:'JetBrains Mono',monospace;}
+.filter-label{font-size:11px;color:var(--ink4);font-family:'SF Mono','Courier New',monospace;}
 .filter-btn{
   padding:4px 11px;border-radius:3px;
   border:1px solid var(--line);background:var(--bg);
   font-size:11px;cursor:pointer;transition:all .15s;
-  font-family:'Noto Serif SC',serif;color:var(--ink3);
+  font-family:'PingFang SC','Microsoft YaHei','SimSun',serif;color:var(--ink3);
 }
 .filter-btn:hover,.filter-btn.active{background:var(--ink);color:#f7f4ee;border-color:var(--ink);}
 
@@ -277,10 +277,10 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 }
 .ag-badge{
   font-size:10px;padding:3px 9px;border-radius:2px;
-  font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:2px;
+  font-family:'SF Mono','Courier New',monospace;font-weight:700;letter-spacing:2px;
 }
 .ag-name{font-size:14px;font-weight:700;}
-.ag-count{font-size:11px;color:var(--ink4);margin-left:auto;font-family:'JetBrains Mono',monospace;}
+.ag-count{font-size:11px;color:var(--ink4);margin-left:auto;font-family:'SF Mono','Courier New',monospace;}
 .ag-toggle{font-size:11px;color:var(--ink4);}
 .ag-desc{font-size:11px;color:var(--ink3);margin-bottom:10px;line-height:1.6;}
 
@@ -326,7 +326,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .cc-tags{display:flex;gap:5px;flex-wrap:wrap;}
 .cc-tag{
   font-size:10px;padding:1px 6px;border-radius:2px;
-  font-family:'JetBrains Mono',monospace;
+  font-family:'SF Mono','Courier New',monospace;
 }
 .ct-law{background:#f5ecd8;color:var(--gold);}
 .ct-doc{background:#e8eef8;color:var(--blue);}
@@ -335,7 +335,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   font-size:10px;color:var(--ink4);
   padding:2px 6px;cursor:pointer;border-radius:3px;
   transition:background .1s;flex-shrink:0;margin-top:1px;
-  font-family:'JetBrains Mono',monospace;
+  font-family:'SF Mono','Courier New',monospace;
 }
 .cc-exp:hover{background:var(--bg2);color:var(--ink2);}
 
@@ -348,7 +348,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .cc-sec{margin-bottom:9px;}
 .cc-sec-label{
   font-size:10px;font-weight:700;letter-spacing:2px;
-  color:var(--ink4);font-family:'JetBrains Mono',monospace;margin-bottom:5px;
+  color:var(--ink4);font-family:'SF Mono','Courier New',monospace;margin-bottom:5px;
 }
 .law-block{
   background:#fdf8ee;
@@ -360,7 +360,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 .law-text{color:var(--ink2);}
 .law-original{
   font-size:10px;color:var(--ink4);margin-top:4px;
-  font-family:'JetBrains Mono',monospace;
+  font-family:'SF Mono','Courier New',monospace;
   background:var(--bg2);padding:4px 8px;border-radius:3px;
   line-height:1.6;
 }
@@ -385,7 +385,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
   transform:translateX(-50%) translateY(8px);
   background:var(--ink);color:#f7f4ee;
   padding:10px 22px;border-radius:5px;font-size:12px;
-  font-family:'JetBrains Mono',monospace;
+  font-family:'SF Mono','Courier New',monospace;
   opacity:0;transition:all .2s;z-index:999;
   white-space:nowrap;pointer-events:none;
 }
@@ -502,7 +502,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min
 // 配置：PDF.js
 // ══════════════════════════════════════════════
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 
 // ══════════════════════════════════════════════
 // 状态
