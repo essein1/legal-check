@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>法律核查指引系统</title>
 <script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
 <style>
 
 
@@ -614,7 +615,16 @@ async function handleFiles(newFiles) {
 
 async function readFile(file, ext) {
   if (ext === 'pdf') return await readPDF(file);
+  if (ext === 'doc' || ext === 'docx') return await readWord(file);
   return await readText(file);
+}
+
+async function readWord(file) {
+  const ab = await file.arrayBuffer();
+  const result = await mammoth.extractRawText({ arrayBuffer: ab });
+  const text = result.value;
+  if (!text || text.trim().length < 10) throw new Error('Word内容为空');
+  return text;
 }
 
 async function readPDF(file) {
